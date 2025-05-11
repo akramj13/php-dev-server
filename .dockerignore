@@ -1,0 +1,19 @@
+# Ignore Git metadata
+.git
+.gitignore
+
+# Ignore Docker and VS Code files
+.dockerignore
+devcontainer.json
+docker-compose.yml
+
+# Ignore local config or OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Ignore unnecessary build context (not needed in image)
+README.md
+.env
+node_modules/
+vendor/
