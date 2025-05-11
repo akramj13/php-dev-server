@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    hostname: drupal-dev
+    hostname: php-dev
     ports:
       - "8080:80"
     volumes:
