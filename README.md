@@ -25,7 +25,7 @@ A Docker-based development environment for PHP projects and more (e.g. Drupal pr
    docker-compose up -d
    ```
 
-3. Access Drupal at http://localhost:8080
+3. Access the server at http://localhost:8080
 
 ## Features
 
@@ -55,4 +55,4 @@ A Docker-based development environment for PHP projects and more (e.g. Drupal pr
 
 ## VS Code Integration
 
-This project includes a devcontainer configuration for VS Code. When opening the project in VS Code with the Remote Containers extension installed, you'll be prompted to reopen the project in a container.
+This project includes a devcontainer configuration for VS Code. When opening the project in VS Code with the **Remote Containers** extension installed, you'll be prompted to reopen the project in a container.
