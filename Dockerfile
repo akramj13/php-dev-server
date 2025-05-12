@@ -3,10 +3,12 @@ FROM php:8.3.21-apache
 # Install dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
     zip unzip curl git libzip-dev sudo \
-    && docker-php-ext-install zip pdo pdo_mysql
+    libpng-dev libjpeg-dev libfreetype6-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install zip pdo pdo_mysql gd opcache
 
 # Enable Apache modules
-RUN a2enmod
+RUN a2enmod rewrite
 
 # Suppress ServerName warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
