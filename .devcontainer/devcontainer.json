@@ -7,7 +7,8 @@
   "remoteUser": "dev",
   "workspaceFolder": "/var/www/html",
   "forwardPorts": [8080],
-  "postCreateCommand": "composer install || true && service apache2 start",
+  "postCreateCommand": "composer install || true",
+  "postStartCommand": "sudo service apache2 start",
   "remoteEnv": {
     "MYSQL_USER": "${localEnv:MYSQL_USER}",
     "MYSQL_PASSWORD": "${localEnv:MYSQL_PASSWORD}"

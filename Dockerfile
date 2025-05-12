@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg-dev libfreetype6-dev \
     $(cat /tmp/install.txt | tr '\n' ' ') \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install zip pdo pdo_mysql gd opcache
+    && docker-php-ext-install zip pdo pdo_mysql gd opcache \
+    && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache modules
 RUN a2enmod rewrite
@@ -25,7 +26,7 @@ RUN useradd -ms /bin/bash dev && \
     echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Give dev ownership of Apache web root
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R dev:www-data /var/www/html
 
 # Copy custom bash profile to dev user
 COPY profile.txt /home/dev/.bashrc
@@ -37,5 +38,8 @@ COPY profile.txt /root/.bashrc
 # Set working directory
 WORKDIR /var/www/html
 
-# Start Apache in foreground
+# Set default user to root to allow Apache to start properly
+USER root
+
+# Start Apache in foreground (ensures container stays alive)
 CMD ["apache2-foreground"]
