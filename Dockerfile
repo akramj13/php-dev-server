@@ -25,7 +25,7 @@ RUN useradd -ms /bin/bash dev && \
     echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Give dev ownership of Apache web root
-RUN chown -R dev:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html
 
 # Copy custom bash profile to dev user
 COPY profile.txt /home/dev/.bashrc
