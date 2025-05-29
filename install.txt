@@ -1,2 +1,2 @@
 vim
-iputils-ping
+default-mysql-client

@@ -1,4 +1,4 @@
-FROM php:8.3.21-apache
+FROM php:8.4.6-apache
 
 # Copy install.txt to the container
 COPY install.txt /tmp/install.txt
@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
 
 # Enable Apache modules
 RUN a2enmod rewrite
+
+# Enable PHP output buffering
+RUN echo 'output_buffering = 4096' > /usr/local/etc/php/conf.d/output-buffering.ini
 
 # Suppress ServerName warning
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
